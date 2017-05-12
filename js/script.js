@@ -1,7 +1,7 @@
 //JS and jQuery for RQM
 $('document').ready(function(){
 	$('#btn-internet').addClass('btn-primary');
-	$('#btn-saved-quote').addClass('disabled');
+	$('#btn-tweet').addClass('disabled');
 });
 
 // var savedQuote = {
