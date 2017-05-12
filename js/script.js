@@ -28,7 +28,7 @@ var insertNewQuote = function(myQuote, myAuthor){
 }
 
 var getRandomArbitrary = function(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+	return Math.floor(Math.random() * (max - min) + min);
 }
 
 
@@ -57,10 +57,24 @@ var generateInternetQuote = function(){
 	// 	$('#main-blockquote').html(myStr);
 	// });
 
-	var myQuote = "This is a placeholder quote while I work on the general internet API.";
-	var myAuthor = "leofofeo";
+	$.ajax({
+		url: "http://api.forismatic.com/api/1.0/?",
+		dataType: "jsonp",
+		data: "method=getQuote&format=jsonp&lang=en&jsonp=?",
+		success: function( response ) {
+			var myQuote = response.quoteText;
+			var myAuthor = response.quoteAuthor;
+			if(response.quoteAuthor === ''){
+				myAuthor = 'Unknown';
+			}
+			insertNewQuote(myQuote, myAuthor);
+		}
+	});
 
-	insertNewQuote(myQuote, myAuthor);
+	// var myQuote = "This is a placeholder quote while I work on the general internet API.";
+	// var myAuthor = "leofofeo";
+
+	
 }
 
 ////////// End Internet Functionality ////////////
