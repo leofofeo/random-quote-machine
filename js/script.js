@@ -15,9 +15,11 @@ $('#btn-new-quote').on('click', function(){
 		source = 'office';
 	}
 
-	$.getJSON('js/office.json', function(json){
-		alert('hello');
-		$('#test-blockquote').html(JSON.stringify(json));
+	$.getJSON('https://leofofeo.github.io/random-quote-machine/js/office.json', function(json){
+
+		var myObj = JSON.stringify(json);
+		
+		$('#test-blockquote').html(myObj);
 	});
 
 	console.log(source);
