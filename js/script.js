@@ -27,6 +27,10 @@ var insertNewQuote = function(myQuote, myAuthor){
 	$('#author-box').html('-- ' + myAuthor);
 }
 
+var getRandomArbitrary = function(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
 
 ////////// End New Quote Functionality ////////////
 
@@ -47,12 +51,16 @@ $('#btn-internet').on('click', function(){
 
 
 var generateInternetQuote = function(){
+	var number = getRandomArbitrary(1, 99999);
+	$.getJSON('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en&key=' + number, function(json){
+		var myStr = JSON.stringify(json);
+		$('#main-blockquote').html(myStr);
+	});
 
+	// var myQuote = "This is a placeholder quote while I work on the general internet API.";
+	// var myAuthor = "leofofeo";
 
-	var myQuote = "This is a placeholder quote while I work on the general internet API.";
-	var myAuthor = "leofofeo";
-
-	insertNewQuote(myQuote, myAuthor);
+	// insertNewQuote(myQuote, myAuthor);
 }
 
 ////////// End Internet Functionality ////////////
@@ -87,11 +95,17 @@ var generateOfficeQuote = function(){
 	});
 }
 
-var getRandomArbitrary = function(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
-}
-
 ////////// End Office Functionality ////////////
 
 
-//Twitter Functionality
+////////// Twitter Functionality ///////////////
+
+
+
+////////// End Twiter Functionalityt  //////////
+
+
+///////// CORS Methods ////////////////
+
+
+///////// End CORS Methods ////////
