@@ -52,7 +52,7 @@ $('#btn-internet').on('click', function(){
 
 var generateInternetQuote = function(){
 	var number = getRandomArbitrary(1, 99999);
-	$.getJSON('http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en&key=' + number, function(json){
+	$.getJSON('https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en&key=' + number, function(json){
 		var myStr = JSON.stringify(json);
 		$('#main-blockquote').html(myStr);
 	});
