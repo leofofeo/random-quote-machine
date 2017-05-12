@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Leo Rubiano</title>
+  <title>RQM</title>
 
   <link rel="stylesheet" type="text/css" href="css/styles.css">
   <!-- Bootstrap -->
@@ -59,10 +59,10 @@
 
       <div class="container nomargin">
         <section>
-          <div class="container">
+          <div class="container"><!-- Begin main content container -->
             <div class="row"> <!-- Title Row -->
-              <div class="col-md-3"></div>
-              <div class="col-md-6">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
                 <div class="text-center padding">
                   <h1 class="title padding">Random Quote Generator</h1>
                   <h3>
@@ -81,13 +81,38 @@
               </div>
               <div class="col-md-3">
                 <button class="btn btn-default btn-lg my-btn" type="button" aria-haspopup="true" aria-expanded="false" id="btn-office">
-                    The Office </span>
+                    The Office
                   </button>
               </div>
               <div class="col-md-3"></div>
-
             </div> <!-- End button row-->
-          </div>
+
+            <div class="row text-center"> <!-- Begin Quotebox Row -->
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="quote-container" id="quote-container">
+                  <blockquote id="main-blockquote" class="blockquote">
+                    "i have flaws. what are they? I sing in the shower. sometimes I spend too much time volunteering. occasionally i'll hit someobody with my car. so sue me. no, don't "
+                  </blockquote>
+                  <h4>--  Michael Scott</h4>
+                </div>
+              </div>
+            </div> <!-- End Quotebox Row -->
+
+            <div class="row text-center end-row"><!-- SM & New Quote Row -->
+              <div class="col-md-3"></div>
+              <div class="col-md-3">
+                <button class="btn btn-default btn-lg my-btn" type="button" aria-haspopup="true" aria-expanded="false" id="btn-tweet">
+                    Share this quote! <i class="fa fa-twitter"></i>
+                  </button>
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-default btn-lg my-btn" type="button" aria-haspopup="true" aria-expanded="false" id="btn-new-quote">
+                    New Quote
+                  </button>
+              </div>
+            </div><!-- End SM & New Quote Row -->
+          </div><!-- End Main Content container -->
 
         </section>  
 

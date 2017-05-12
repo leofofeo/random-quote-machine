@@ -11,6 +11,8 @@ h3 {
 	font-size:.8em;
 	text-align: center;
 	color:#fff!important;
+	padding-left:20%;
+	padding-right: 20%;
 }
 
 
@@ -28,12 +30,30 @@ h3 {
 	margin:10% auto;
 }
 
+.end-row {
+	margin-bottom:100px;
+}
+
 .my-btn {
 	width: 80%!important;
+	margin: 20px auto;
 }
 
 .padding {
 	margin: 50px 0;
+}
+
+.quote-container {
+	font-color:#9b59b6;
+	background-color:#fff;
+	width:100%;
+	border-radius: 20px;
+	padding:30px;
+	margin:50px auto;
+}
+
+.quote-container h4 {
+	text-align: right;
 }
 
 .title {
