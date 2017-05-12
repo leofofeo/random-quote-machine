@@ -15,6 +15,11 @@ $('#btn-new-quote').on('click', function(){
 		source = 'office';
 	}
 
+	$.getJSON('js/office.json', function(json){
+		alert('hello');
+		$('#test-blockquote').html(JSON.stringify(json));
+	});
+
 	console.log(source);
 });
 
