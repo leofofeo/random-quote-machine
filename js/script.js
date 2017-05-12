@@ -1,14 +1,14 @@
 //JS and jQuery for RQM
 $('document').ready(function(){
 	$('#btn-internet').addClass('btn-primary');
-	$('#btn-saved-quote').addClass('disabled');
+	// $('#btn-saved-quote').addClass('disabled');
 });
 
-var savedQuote = {
-	quote : '',
-	author : '',
-	source: ''
-}
+// var savedQuote = {
+// 	quote : '',
+// 	author : '',
+// 	source: ''
+// }
 ////////// General Quote Functionality ////////////
 $('#btn-new-quote').on('click', function(){
 
@@ -27,9 +27,9 @@ $('#btn-new-quote').on('click', function(){
 	}	
 });
 
-$('#btn-saved-quote').on('click', function(){
-	getSavedQuote();
-});
+// $('#btn-saved-quote').on('click', function(){
+// 	getSavedQuote();
+// });
 
 var enableGetLastQuote = function(){
 	if($('#btn-saved-quote').hasClass('disabled')){
@@ -46,26 +46,26 @@ var getRandomArbitrary = function(min, max) {
 	return Math.floor(Math.random() * (max - min) + min);
 }
 
-var saveQuote = function(myQuote, myAuthor){
-	savedQuote.quote = myQuote;
-	savedQuote.author = myAuthor;
-	if($('#btn-office').hasClass('btn-primary')){
-		savedQuote.source = 'office';
-	} else {
-		savedQuote.source = 'internet';
-	}
-}
+// var saveQuote = function(myQuote, myAuthor){
+// 	savedQuote.quote = myQuote;
+// 	savedQuote.author = myAuthor;
+// 	if($('#btn-office').hasClass('btn-primary')){
+// 		savedQuote.source = 'office';
+// 	} else {
+// 		savedQuote.source = 'internet';
+// 	}
+// }
 
-var getSavedQuote = function(){
-	insertNewQuote(savedQuote.quote, savedQuote.author);
-	if(savedQuote.source === "office"){
-		$('#btn-office').addClass('btn-primary');
-		$('#btn-internet').removeClass('btn-primary');
-	} else {
-		$('#btn-internet').addClass('btn-primary');
-		$('#btn-office').removeClass('btn-primary');
-	}
-}
+// var getSavedQuote = function(){
+// 	insertNewQuote(savedQuote.quote, savedQuote.author);
+// 	if(savedQuote.source === "office"){
+// 		$('#btn-office').addClass('btn-primary');
+// 		$('#btn-internet').removeClass('btn-primary');
+// 	} else {
+// 		$('#btn-internet').addClass('btn-primary');
+// 		$('#btn-office').removeClass('btn-primary');
+// 	}
+// }
 ////////// End General Quote Functionality ////////////
 
 
@@ -86,7 +86,7 @@ $('#btn-internet').on('click', function(){
 
 
 var generateInternetQuote = function(){
-	enableGetLastQuote();
+	// enableGetLastQuote();
 	var number = getRandomArbitrary(1, 99999);
 	
 	$.ajax({
@@ -100,7 +100,6 @@ var generateInternetQuote = function(){
 				myAuthor = 'Unknown';
 			}
 			insertNewQuote(myQuote, myAuthor);
-			saveQuote(myQuote, myAuthor);
 		}
 	});
 	
@@ -139,7 +138,6 @@ var generateOfficeQuote = function(){
 		var myAuthor = myObj[number]["author"];
 		
 		insertNewQuote(myQuote, myAuthor);
-		saveQuote(myQuote, myAuthor);
 	});
 
 }
