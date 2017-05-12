@@ -27,6 +27,7 @@ var insertNewQuote = function(myQuote, myAuthor){
 	$('#author-box').html('-- ' + myAuthor);
 }
 
+
 ////////// End New Quote Functionality ////////////
 
 
@@ -46,6 +47,8 @@ $('#btn-internet').on('click', function(){
 
 
 var generateInternetQuote = function(){
+
+
 	var myQuote = "This is a placeholder quote while I work on the general internet API.";
 	var myAuthor = "leofofeo";
 
@@ -71,18 +74,22 @@ $('#btn-office').on('click', function(){
 
 // Generate quote from the office
 var generateOfficeQuote = function(){
+	var number = getRandomArbitrary(1, 24);
+	console.log("number: " + number);
 	$.getJSON('https://leofofeo.github.io/random-quote-machine/js/office.json', function(json){
 
 		var myStr = JSON.stringify(json);
 		var myObj = JSON.parse(myStr);
-		var myQuote = myObj[1]["text"];
-		var myAuthor = myObj[1]["author"];
+		var myQuote = myObj[number]["text"];
+		var myAuthor = myObj[number]["author"];
 		
 		insertNewQuote(myQuote, myAuthor);
 	});
 }
 
-
+var getRandomArbitrary = function(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
 
 ////////// End Office Functionality ////////////
 
