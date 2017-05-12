@@ -1,10 +1,15 @@
 //JS and jQuery for RQM
 $('document').ready(function(){
 	$('#btn-internet').addClass('btn-primary');
+	$('#btn-saved-quote').addClass('disabled');
 });
 
-
-////////// New Quote Functionality ////////////
+var savedQuote = {
+	quote : '',
+	author : '',
+	source: ''
+}
+////////// General Quote Functionality ////////////
 $('#btn-new-quote').on('click', function(){
 
 	var source = '';
@@ -22,6 +27,16 @@ $('#btn-new-quote').on('click', function(){
 	}	
 });
 
+$('#btn-saved-quote').on('click', function(){
+	getSavedQuote();
+});
+
+var enableGetLastQuote = function(){
+	if($('#btn-saved-quote').hasClass('disabled')){
+		$('#btn-saved-quote').removeClass('disabled');
+	}
+}
+
 var insertNewQuote = function(myQuote, myAuthor){
 	$('#main-blockquote').html("\"" + myQuote + "\"");
 	$('#author-box').html('-- ' + myAuthor);
@@ -31,8 +46,27 @@ var getRandomArbitrary = function(min, max) {
 	return Math.floor(Math.random() * (max - min) + min);
 }
 
+var saveQuote = function(myQuote, myAuthor){
+	savedQuote.quote = myQuote;
+	savedQuote.author = myAuthor;
+	if($('#btn-office').hasClass('btn-primary')){
+		savedQuote.source = 'office';
+	} else {
+		savedQuote.source = 'internet';
+	}
+}
 
-////////// End New Quote Functionality ////////////
+var getSavedQuote = function(){
+	insertNewQuote(savedQuote.quote, savedQuote.author);
+	if(savedQuote.source === "office"){
+		$('#btn-office').addClass('btn-primary');
+		$('#btn-internet').removeClass('btn-primary');
+	} else {
+		$('#btn-internet').addClass('btn-primary');
+		$('#btn-office').removeClass('btn-primary');
+	}
+}
+////////// End General Quote Functionality ////////////
 
 
 ////////// The Internet Functionality ////////////
@@ -41,6 +75,7 @@ var getRandomArbitrary = function(min, max) {
 $('#btn-internet').on('click', function(){
 	if($('#btn-office').hasClass('btn-primary')){
 		$('#btn-office').removeClass('btn-primary');
+		generateInternetQuote();
 	}
 
 	if($('#btn-internet').hasClass('btn-primary')){
@@ -51,6 +86,7 @@ $('#btn-internet').on('click', function(){
 
 
 var generateInternetQuote = function(){
+	enableGetLastQuote();
 	var number = getRandomArbitrary(1, 99999);
 	
 	$.ajax({
@@ -64,8 +100,10 @@ var generateInternetQuote = function(){
 				myAuthor = 'Unknown';
 			}
 			insertNewQuote(myQuote, myAuthor);
+			saveQuote(myQuote, myAuthor);
 		}
 	});
+	
 	
 }
 
@@ -78,18 +116,21 @@ var generateInternetQuote = function(){
 $('#btn-office').on('click', function(){
 	if($('#btn-internet').hasClass('btn-primary')){
 		$('#btn-internet').removeClass('btn-primary');
+		generateOfficeQuote();
 	}
 
 	if($('#btn-office').hasClass('btn-primary')){
 	} else {
 		$('#btn-office').addClass('btn-primary');
 	}
+
+
 });
 
 // Generate quote from the office
 var generateOfficeQuote = function(){
+	enableGetLastQuote();
 	var number = getRandomArbitrary(1, 24);
-	console.log("number: " + number);
 	$.getJSON('https://leofofeo.github.io/random-quote-machine/js/office.json', function(json){
 
 		var myStr = JSON.stringify(json);
@@ -98,7 +139,9 @@ var generateOfficeQuote = function(){
 		var myAuthor = myObj[number]["author"];
 		
 		insertNewQuote(myQuote, myAuthor);
+		saveQuote(myQuote, myAuthor);
 	});
+
 }
 
 ////////// End Office Functionality ////////////
