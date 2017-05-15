@@ -129,7 +129,7 @@ $('#btn-office').on('click', function(){
 // Generate quote from the office
 var generateOfficeQuote = function(){
 	enableGetLastQuote();
-	var number = getRandomArbitrary(1, 24);
+	var number = getRandomArbitrary(1, 52);
 	$.getJSON('https://leofofeo.github.io/random-quote-machine/js/office.json', function(json){
 
 		var myStr = JSON.stringify(json);
